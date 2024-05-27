@@ -1,0 +1,52 @@
+{
+  "extends": "next/core-web-vitals"
+}
+
+// {
+//   "parser": "@typescript-eslint/parser",
+//   "extends": [
+//     "next",
+//     "next/core-web-vitals",
+//     "prettier",
+//     "eslint:recommended",
+//     "plugin:@typescript-eslint/recommended"
+//   ],
+//   "plugins": ["prettier", "import", "unused-imports", "@typescript-eslint"],
+//   "rules": {
+//     "prettier/prettier": "error",
+//     "no-unused-vars": "off",
+//     "react-hooks/exhaustive-deps": "off",
+//     "@next/next/no-img-element": "off",
+//     "@typescript-eslint/no-explicit-any": "error",
+//     "@typescript-eslint/explicit-module-boundary-types": "error",
+//     "unused-imports/no-unused-imports": "error",
+//     "unused-imports/no-unused-vars": [
+//       "error",
+//       {
+//         "vars": "all",
+//         "varsIgnorePattern": "^_",
+//         "args": "after-used",
+//         "argsIgnorePattern": "^_"
+//       }
+//     ],
+//     "no-restricted-syntax": [
+//       "error",
+//       {
+//         "selector": "CallExpression[callee.property.name='then']",
+//         "message": "Prefer async/await to .then()"
+//       },
+//       {
+//         "selector": "CallExpression[callee.property.name='catch']",
+//         "message": "Prefer async/await to .catch()"
+//       }
+//     ],
+//     "import/order": [
+//       "error",
+//       {
+//         "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+//         "newlines-between": "always",
+//         "alphabetize": { "order": "asc", "caseInsensitive": true }
+//       }
+//     ]
+//   }
+// }
