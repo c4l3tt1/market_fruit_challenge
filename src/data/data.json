@@ -1,0 +1,28 @@
+{
+    "buckets": [
+        {
+            "id": "ccefe22e-97c4-4920-91fe-f249be3057a3",
+            "name": "Bucket 1",
+            "capacity": 5,
+            "fruitsList": []
+        },
+        {
+            "id": "ccefe22e-97c4-4920-91fe-f249be3057a3",
+            "name": "Bucket 2",
+            "capacity": 3,
+            "fruitsList": []
+        }
+    ],
+    "fruits": [
+        [
+            {
+                "name": "Banana",
+                "price": 0.5
+            },
+            {
+                "name": "Maçã",
+                "price": 0.26
+            }
+        ]
+    ]
+}
