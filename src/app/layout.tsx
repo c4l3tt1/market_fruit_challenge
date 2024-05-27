@@ -1,3 +1,4 @@
+import { Header } from '@/components/header'
 import { CssBaseline } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import type { Metadata } from 'next'
@@ -25,6 +26,7 @@ const RootLayout = ({
   return (
     <html lang="pt-br">
       <body className={`${montserrat.variable} ${montserrat.className}`}>
+        <Header />
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <MUIThemeProvider>
             <>
