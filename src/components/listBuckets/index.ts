@@ -1,0 +1,1 @@
+export * from './listBuckets.component'
