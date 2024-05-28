@@ -3,7 +3,7 @@ export interface IFruit {
   price: number
 }
 
-export interface IListFruits {
+export interface IFruitsList {
   items: IFruit[]
 }
 

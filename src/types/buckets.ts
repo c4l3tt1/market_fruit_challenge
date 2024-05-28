@@ -5,12 +5,12 @@ export interface IBucket {
   name: string
   capacity: number
   totalPrice?: number
-  fruitsList: IFruit[]
+  fruitsList?: IFruit[]
   ocupation?: number
 }
 
 export interface IBucketsList {
-  items: IBucket
+  items: IBucket[]
 }
 
 export interface IBucketFormProps {
