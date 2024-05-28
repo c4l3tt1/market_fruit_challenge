@@ -1,3 +1,4 @@
+'use client'
 import { IBucketFormProps } from '@/types/buckets'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'

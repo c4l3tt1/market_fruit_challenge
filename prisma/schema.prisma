@@ -13,19 +13,29 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Fruits {
-  id       String  @id @default(uuid())
-  name     String
-  price    Decimal @db.Decimal(10, 2)
-  bucket   Bucket? @relation(fields: [bucketId], references: [id])
-  bucketId String?
+model Bucket {
+  id        Int           @id @default(autoincrement())
+  capacity  Int
+  fruits    BucketFruit[]
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
 }
 
-model Bucket {
-  id         String   @id @default(uuid())
-  name       String
-  capacity   Int
-  totalPrice Decimal  @db.Decimal(10, 2)
-  fruitsList Fruits[]
-  ocupation  Decimal  @db.Decimal(3, 2)
+model Fruit {
+  id        Int           @id @default(autoincrement())
+  name      String
+  price     Decimal       @db.Decimal(10, 2)
+  buckets   BucketFruit[]
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+model BucketFruit {
+  id       Int    @id @default(autoincrement())
+  bucketId Int
+  fruitId  Int
+  bucket   Bucket @relation(fields: [bucketId], references: [id], onDelete: Cascade)
+  fruit    Fruit  @relation(fields: [fruitId], references: [id], onDelete: Cascade)
+
+  @@unique([bucketId, fruitId])
 }

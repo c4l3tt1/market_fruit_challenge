@@ -22,7 +22,7 @@ export const ListFruits = async () => {
                   <TableCell component="th" scope="row">
                     {fruit?.name}
                   </TableCell>
-                  <TableCell align="right">R$ {fruit?.price.toFixed(2)}</TableCell>
+                  <TableCell align="right">R$ {fruit?.price?.toFixed(2)}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

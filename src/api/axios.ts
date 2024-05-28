@@ -1,12 +1,14 @@
 import axios from 'axios'
 
-export const BASE_URL =
-  process.env.NODE_ENV === 'production' ? process.env.API_URL : process.env.NEXT_PUBLIC_API_BASE_URL
+export const BASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
+export const API_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
 const apiClient = axios.create({
   baseURL: BASE_URL,
   timeout: 10000,
   headers: {
+    apikey: API_KEY,
+    Authorization: `Bearer ${API_KEY}`,
     'Content-Type': 'application/json',
   },
 })

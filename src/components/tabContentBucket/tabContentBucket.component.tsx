@@ -23,7 +23,12 @@ export const TabContentBucket = () => {
         <>
           <BucketForm
             onSubmit={async (data) => {
-              await createBucket(data)
+              await createBucket({
+                name: data.name,
+                capacity: data.capacity,
+                totalPrice: 0,
+                ocupation: 0,
+              })
               setStep('list')
             }}
           />
