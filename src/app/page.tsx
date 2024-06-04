@@ -1,11 +1,21 @@
 import { DynamicTabs } from '@/components/dynamicTabs'
-import { dynamicTabsList } from '@/data/tabs'
+import { TabContentBucket } from '@/components/tabContentBucket'
+import { TabContentFruits } from '@/components/tabContentFruits'
 
 const HomePage = () => {
-  const hasTabsList = dynamicTabsList && dynamicTabsList.length > 0
+  const dynamicTabsList = [
+    {
+      label: 'Fruits',
+      content: <TabContentFruits />,
+    },
+    {
+      label: 'Buckets',
+      content: <TabContentBucket />,
+    },
+  ]
   return (
     <section className="">
-      <div className="container md:px-4">{hasTabsList && <DynamicTabs tabs={dynamicTabsList} />}</div>
+      <div className="container md:px-4">{<DynamicTabs tabs={dynamicTabsList} />}</div>
     </section>
   )
 }

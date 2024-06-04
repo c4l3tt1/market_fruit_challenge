@@ -1,18 +1,24 @@
 import { IFruit } from './fruits'
 
+export interface IBucketFruitsList {
+  name?: string
+  price?: number
+  quantity?: number
+}
+
 export interface IBucket {
   id?: string
   name: string
   capacity: number
-  totalPrice?: number
-  fruitsList?: IFruit[]
-  ocupation?: number
+  totalPrice: number
+  fruitsList: IBucketFruitsList[]
+  ocupation: number
 }
 
 export interface IBucketsList {
-  items: IBucket[]
+  listBuckets: IBucket[]
 }
 
 export interface IBucketFormProps {
-  onSubmit: (data: { name: string; capacity: number }) => void
+  onSubmit: (data: { name: string; capacity: number; fruitsList: IFruit[] }) => void
 }

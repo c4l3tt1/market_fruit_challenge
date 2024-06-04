@@ -8,6 +8,17 @@ import { BucketForm } from '../bucketForm'
 export const TabContentBucket = () => {
   const [step, setStep] = useState<string>('list')
 
+  const onSubmitCreateBucket = async (data: any) => {
+    await createBucket({
+      name: data.name,
+      capacity: data.capacity,
+      totalPrice: 0,
+      ocupation: 0,
+      fruitsList: [],
+    })
+    setStep('list')
+  }
+
   return (
     <>
       {step === 'list' ? (
@@ -21,17 +32,7 @@ export const TabContentBucket = () => {
         </>
       ) : (
         <>
-          <BucketForm
-            onSubmit={async (data) => {
-              await createBucket({
-                name: data.name,
-                capacity: data.capacity,
-                totalPrice: 0,
-                ocupation: 0,
-              })
-              setStep('list')
-            }}
-          />
+          <BucketForm onSubmit={(data) => onSubmitCreateBucket(data)} />
         </>
       )}
     </>

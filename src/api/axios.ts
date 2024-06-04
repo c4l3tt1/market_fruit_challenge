@@ -1,16 +1,14 @@
 import axios from 'axios'
 
-export const BASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
 export const API_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+export const BASE_URL =
+  process.env.NODE_ENV === 'development'
+    ? process.env.NEXT_PUBLIC_LOCALHOST_URL
+    : process.env.NEXT_PUBLIC_PRODUCTION_URL
 
 const apiClient = axios.create({
   baseURL: BASE_URL,
-  timeout: 10000,
-  headers: {
-    apikey: API_KEY,
-    Authorization: `Bearer ${API_KEY}`,
-    'Content-Type': 'application/json',
-  },
 })
 
 apiClient.interceptors.response.use(

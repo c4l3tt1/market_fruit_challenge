@@ -4,7 +4,7 @@ export interface IFruit {
 }
 
 export interface IFruitsList {
-  items: IFruit[]
+  listFruits: IFruit[]
 }
 
 export interface IFruitFormProps {
