@@ -121,12 +121,14 @@ export const ListBuckets = async () => {
                       ))}
                     </TableCell>
                     <TableCell>
-                      <AddFruitButton
-                        listFruits={listFruits}
-                        props={{ disabled: !canAddFruits }}
-                        onAddFruit={handleAddFruits}
-                        bucketId={bucket?.id}
-                      />
+                      {bucket.id && (
+                        <AddFruitButton
+                          listFruits={listFruits}
+                          disabled={!canAddFruits}
+                          onAddFruit={handleAddFruits}
+                          bucketId={bucket?.id}
+                        />
+                      )}
                     </TableCell>
                   </TableRow>
                 )

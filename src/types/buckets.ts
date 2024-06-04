@@ -20,5 +20,5 @@ export interface IBucketsList {
 }
 
 export interface IBucketFormProps {
-  onSubmit: (data: { name: string; capacity: number; fruitsList: IFruit[] }) => void
+  onSubmit: (data: { name: string; capacity: number; fruitsList?: IFruit[] }) => void
 }

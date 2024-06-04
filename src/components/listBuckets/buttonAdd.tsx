@@ -7,10 +7,9 @@ interface IAddFuitButtonProps {
   listFruits: IFruit[]
   onAddFruit?: (bucketId: string, fruit: IFruit) => void
   bucketId: string
-  props: React.ComponentProps<typeof IconButton>
+  disabled: boolean
 }
-export const AddFruitButton = ({ listFruits, onAddFruit, bucketId, ...props }: IAddFuitButtonProps) => {
-  const { onClick, disabled } = props.props
+export const AddFruitButton = ({ listFruits, onAddFruit, bucketId, disabled }: IAddFuitButtonProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const handleOpenMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -38,7 +37,6 @@ export const AddFruitButton = ({ listFruits, onAddFruit, bucketId, ...props }: I
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleOpenMenu}
-        {...props}
       >
         <AddCircleOutlineRoundedIcon fontSize="inherit" />
       </IconButton>
