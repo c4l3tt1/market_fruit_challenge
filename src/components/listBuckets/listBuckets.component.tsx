@@ -26,12 +26,14 @@ export const ListBuckets = ({
   const [loading, setLoading] = useState<boolean>(true)
 
   const listBucketsFetch = async () => {
+    setLoading(true)
     const listBuckets = await getBuckets()
     setListBuckets(listBuckets)
     setLoading(false)
   }
 
   const listFruitsFetch = async () => {
+    setLoading(true)
     const listFruits = await getFruits()
     setListFruits(listFruits)
     setLoading(false)
@@ -43,10 +45,18 @@ export const ListBuckets = ({
   }, [])
 
   const updateFruitOnList = async (fruit: IFruit, isInsideBucket: boolean) => {
+    setLoading(true)
     await updateFruit(fruit.id, {
       ...fruit,
       isInsideBucket: isInsideBucket,
     })
+    setLoading(false)
+  }
+
+  const updateBucketOnList = async (bucketId: string, bucketData: IBucket) => {
+    setLoading(true)
+    await updateBucket(bucketId, bucketData)
+    setLoading(false)
   }
 
   const getTotalQuantity = (bucket: IBucket): number => {
@@ -80,20 +90,20 @@ export const ListBuckets = ({
           //verify the quantity is different of 0
           if (bucket.fruitsList[alreadyHaveFruitIndex].quantity === 0) {
             bucket.fruitsList.splice(alreadyHaveFruitIndex, 1)
-            updateFruitOnList(fruit, false)
+            await updateFruitOnList(fruit, false)
           } else {
             //update fruit isInsideBucket
-            updateFruitOnList(fruit, true)
+            await updateFruitOnList(fruit, true)
           }
         } else {
           bucket.fruitsList = [...bucket.fruitsList, { ...fruit, quantity: 1 }]
           //update fruit isInsideBucket
-          updateFruitOnList(fruit, true)
+          await updateFruitOnList(fruit, true)
         }
       } else {
         bucket.fruitsList = [{ id: fruit.id, name: fruit.name, price: fruit.price, quantity: 1 }]
         //update fruit isInsideBucket
-        updateFruitOnList(fruit, true)
+        await updateFruitOnList(fruit, true)
       }
 
       const newTotalPrice = getTotalPrice(bucket)
@@ -107,7 +117,7 @@ export const ListBuckets = ({
         fruitsList: bucket.fruitsList,
       }
       //@ts-ignore
-      await updateBucket(bucket.id, bucketData)
+      await updateBucketOnList(bucket.id, bucketData)
       await Promise.all([listBucketsFetch(), listFruitsFetch()])
     }
   }
@@ -124,7 +134,7 @@ export const ListBuckets = ({
           if (bucket.fruitsList[fruitIndex].quantity === 0) {
             bucket.fruitsList.splice(fruitIndex, 1)
             //update fruit isInsideBucket
-            updateFruitOnList(fruit, false)
+            await updateFruitOnList(fruit, false)
           }
         }
       }
@@ -140,7 +150,7 @@ export const ListBuckets = ({
         fruitsList: bucket.fruitsList,
       }
       //@ts-ignore
-      await updateBucket(bucket.id, bucketData)
+      await updateBucketOnList(bucket.id, bucketData)
       await Promise.all([listBucketsFetch(), listFruitsFetch()])
     }
   }

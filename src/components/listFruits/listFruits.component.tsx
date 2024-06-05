@@ -12,6 +12,7 @@ export const ListFruits = ({ listFruitsProps }: { listFruitsProps: IFruit[] }) =
   const [loading, setLoading] = useState<boolean>(true)
 
   const listFruitsFetch = async () => {
+    setLoading(true)
     const listFruits = await getFruits()
     setListFruits(listFruits)
     setLoading(false)
@@ -22,8 +23,10 @@ export const ListFruits = ({ listFruitsProps }: { listFruitsProps: IFruit[] }) =
   }, [])
 
   const handleDeleteFruit = async (fruitId: string) => {
+    setLoading(true)
     await deleteFruit(fruitId)
     listFruitsFetch()
+    setLoading(false)
   }
 
   if (loading) {
