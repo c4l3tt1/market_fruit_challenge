@@ -42,6 +42,6 @@ const config: Config = {
       gap: { ...spacingCustom },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-animate')],
 }
 export default config
