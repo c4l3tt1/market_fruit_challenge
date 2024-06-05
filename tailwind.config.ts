@@ -1,15 +1,6 @@
 import type { Config } from 'tailwindcss'
 
-import {
-  backgroundImagesCustom,
-  boxShadowCustom,
-  colorsCustom,
-  colorsDefault,
-  fontSizeCustom,
-  fontWeightCustom,
-  screensCustom,
-  spacingCustom,
-} from './src/theme'
+import { fontSizeCustom, fontWeightCustom, screensCustom, spacingCustom } from './src/theme'
 
 const config: Config = {
   corePlugins: {
@@ -29,13 +20,12 @@ const config: Config = {
     },
     extend: {
       backgroundImage: {
-        ...backgroundImagesCustom,
+        market: "url('/market-bg.png')",
       },
       boxShadow: {
-        ...boxShadowCustom,
+        header: '0 1px 3px 0 rgba(0, 0, 0, 0.16), 0 1px 3px 0 rgba(0, 0, 0, 0.12)',
       },
 
-      colors: { ...colorsCustom, ...colorsDefault },
       fontSize: { ...fontSizeCustom },
       fontWeight: { ...fontWeightCustom },
       spacing: { ...spacingCustom },

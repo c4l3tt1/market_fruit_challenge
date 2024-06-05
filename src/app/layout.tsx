@@ -31,7 +31,7 @@ const RootLayout = ({
           <MUIThemeProvider>
             <>
               <CssBaseline />
-              <main className="min-h-screen bg-white mt-[70px] py-10">{children}</main>
+              <main className="bg-white mt-[70px] py-10">{children}</main>
             </>
           </MUIThemeProvider>
         </AppRouterCacheProvider>

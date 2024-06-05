@@ -30,52 +30,54 @@ export const BucketForm = ({ onSubmit }: IBucketFormProps) => {
   })
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-80 flex flex-col gap-y-6">
-      <div className="w-full">
-        <Controller
-          name="name"
-          control={control}
-          render={({ field }) => (
-            <TextField
-              {...field}
-              placeholder="Type a name"
-              label="Bucket name"
-              error={!!errors.name}
-              helperText={errors.name?.message}
-              variant="outlined"
-              fullWidth
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          )}
-        />
-      </div>
-      <div className="w-full">
-        <Controller
-          name="capacity"
-          control={control}
-          render={({ field }) => (
-            <TextField
-              {...field}
-              placeholder="Type a number"
-              label="Bucket capacity"
-              error={!!errors.capacity}
-              helperText={errors.capacity?.message}
-              variant="outlined"
-              fullWidth
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          )}
-        />
-      </div>
-      <div className="flex w-full justify-end -mt-3">
-        <Button type="submit" variant="contained">
-          Create Bucket
-        </Button>
-      </div>
-    </form>
+    <div className="w-full flex flex-col justify-center items-center">
+      <form onSubmit={handleSubmit(onSubmit)} className="max-w-80 flex flex-col gap-y-6">
+        <div className="w-full">
+          <Controller
+            name="name"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                placeholder="Type a name"
+                label="Bucket name"
+                error={!!errors.name}
+                helperText={errors.name?.message}
+                variant="outlined"
+                fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            )}
+          />
+        </div>
+        <div className="w-full">
+          <Controller
+            name="capacity"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                placeholder="Type a number"
+                label="Bucket capacity"
+                error={!!errors.capacity}
+                helperText={errors.capacity?.message}
+                variant="outlined"
+                fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            )}
+          />
+        </div>
+        <div className="flex w-full justify-end -mt-3">
+          <Button type="submit" variant="contained">
+            Create Bucket
+          </Button>
+        </div>
+      </form>
+    </div>
   )
 }

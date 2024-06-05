@@ -1,42 +1,16 @@
-'use client'
-import { deleteFruit, getFruits } from '@/api/services/fruits'
-import { IFruit } from '@/types/fruits'
+import { getFruits } from '@/api/services/fruits'
+import { DeleteFruitButton } from '@/components/listFruits'
 import { cn } from '@/utils/classes'
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
-import { useEffect, useState } from 'react'
-import { LoadingList } from '../loadingList'
-import { DeleteFruitButton } from './buttonDelete'
 
-export const ListFruits = ({ listFruitsProps }: { listFruitsProps: IFruit[] }) => {
-  const [listFruits, setListFruits] = useState<IFruit[]>(listFruitsProps)
-  const [loading, setLoading] = useState<boolean>(true)
+export const ListFruits = async () => {
+  const listFruits = await getFruits()
 
-  const listFruitsFetch = async () => {
-    setLoading(true)
-    const listFruits = await getFruits()
-    setListFruits(listFruits)
-    setLoading(false)
-  }
-
-  useEffect(() => {
-    listFruitsFetch()
-  }, [])
-
-  const handleDeleteFruit = async (fruitId: string) => {
-    setLoading(true)
-    await deleteFruit(fruitId)
-    listFruitsFetch()
-    setLoading(false)
-  }
-
-  if (loading) {
-    return <LoadingList />
-  }
   return (
     <>
       {listFruits && listFruits.length > 0 ? (
         <TableContainer>
-          <Table sx={{ minWidth: 650 }} aria-label="Table fruits" stickyHeader>
+          <Table sx={{ minWidth: 320 }} aria-label="Table fruits" stickyHeader>
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
@@ -52,11 +26,7 @@ export const ListFruits = ({ listFruitsProps }: { listFruitsProps: IFruit[] }) =
                   </TableCell>
                   <TableCell>R$ {fruit?.price}</TableCell>
                   <TableCell align="right">
-                    <DeleteFruitButton
-                      onDeleteFruit={handleDeleteFruit}
-                      fruitId={fruit.id}
-                      disabled={fruit.isInsideBucket}
-                    />
+                    <DeleteFruitButton fruitId={fruit.id} disabled={fruit.isInsideBucket} />
                   </TableCell>
                 </TableRow>
               ))}

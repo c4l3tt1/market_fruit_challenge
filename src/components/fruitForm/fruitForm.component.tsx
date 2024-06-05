@@ -1,3 +1,4 @@
+'use client'
 import { IFruitFormProps } from '@/types/fruits'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Button, TextField } from '@mui/material'
@@ -63,54 +64,56 @@ export const FruitForm = ({ onSubmit }: IFruitFormProps) => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-80 flex flex-col gap-y-6">
-      <div className="w-full">
-        <Controller
-          name="name"
-          control={control}
-          render={({ field }) => (
-            <TextField
-              {...field}
-              placeholder="Type a name"
-              label="Fruit name"
-              error={!!errors.name}
-              helperText={errors.name?.message}
-              variant="outlined"
-              fullWidth
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          )}
-        />
-      </div>
-      <div className="w-full">
-        <Controller
-          name="price"
-          control={control}
-          render={({ field }) => (
-            <TextField
-              {...field}
-              placeholder="Type a number"
-              label="Price"
-              error={!!errors.price}
-              helperText={errors.price?.message}
-              variant="outlined"
-              fullWidth
-              value={price}
-              onChange={(e) => handleChangePrice(e.target.value)}
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          )}
-        />
-      </div>
-      <div className="flex w-full justify-end -mt-3">
-        <Button type="submit" variant="contained">
-          Add Fruit
-        </Button>
-      </div>
-    </form>
+    <div className="w-full flex flex-col justify-center items-center">
+      <form onSubmit={handleSubmit(onSubmit)} className="max-w-80 flex flex-col gap-y-6">
+        <div className="w-full">
+          <Controller
+            name="name"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                placeholder="Type a name"
+                label="Fruit name"
+                error={!!errors.name}
+                helperText={errors.name?.message}
+                variant="outlined"
+                fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            )}
+          />
+        </div>
+        <div className="w-full">
+          <Controller
+            name="price"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                placeholder="Type a number"
+                label="Price"
+                error={!!errors.price}
+                helperText={errors.price?.message}
+                variant="outlined"
+                fullWidth
+                value={price}
+                onChange={(e) => handleChangePrice(e.target.value)}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            )}
+          />
+        </div>
+        <div className="flex w-full justify-end -mt-3">
+          <Button type="submit" variant="contained">
+            Add Fruit
+          </Button>
+        </div>
+      </form>
+    </div>
   )
 }
