@@ -1,8 +1,9 @@
 import { IFruit } from './fruits'
 
 export interface IBucketFruitsList {
+  id?: string
   name?: string
-  price?: number
+  price?: string
   quantity?: number
 }
 

@@ -1,6 +1,8 @@
 export interface IFruit {
+  id: string
   name: string
-  price: number
+  price: string
+  isInsideBucket: boolean
 }
 
 export interface IFruitsList {
@@ -8,5 +10,5 @@ export interface IFruitsList {
 }
 
 export interface IFruitFormProps {
-  onSubmit: (data: { name: string; price: number }) => void
+  onSubmit: (data: { name: string; price: string }) => void
 }

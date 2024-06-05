@@ -16,6 +16,11 @@ export const createFruit = async (fruit: Omit<IFruit, 'id'>): Promise<IFruit> =>
   return response.data
 }
 
+export const updateFruit = async (id: string, fruit: Partial<IFruit>): Promise<IFruit> => {
+  const response = await apiClient.put<IFruit>(`/fruits/${id}`, fruit)
+  return response.data
+}
+
 export const deleteFruit = async (id: string): Promise<void> => {
   await apiClient.delete(`/fruits/${id}`)
 }
