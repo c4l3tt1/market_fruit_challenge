@@ -5,6 +5,10 @@ export const BASE_URL = 'https://market-fruit-api.vercel.app'
 
 const apiClient = axios.create({
   baseURL: BASE_URL,
+  timeout: 3000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
 })
 
 apiClient.interceptors.response.use(
