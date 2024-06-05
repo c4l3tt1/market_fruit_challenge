@@ -1,9 +1,10 @@
 import { Header } from '@/components/header'
+import { LoadingList } from '@/components/loadingList'
 import { CssBaseline } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
-import React from 'react'
+import React, { Suspense } from 'react'
 import './globals.css'
 import MUIThemeProvider from './provider'
 
@@ -31,7 +32,9 @@ const RootLayout = ({
           <MUIThemeProvider>
             <>
               <CssBaseline />
-              <main className="bg-white mt-[70px] py-10">{children}</main>
+              <main className="bg-white mt-[70px] py-10">
+                <Suspense fallback={<LoadingList />}>{children}</Suspense>
+              </main>
             </>
           </MUIThemeProvider>
         </AppRouterCacheProvider>
