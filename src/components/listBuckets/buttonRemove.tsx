@@ -1,16 +1,17 @@
+import { IBucketFruitsList } from '@/types/buckets'
 import { IFruit } from '@/types/fruits'
 import { cn } from '@/utils/classes'
-import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded'
+import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutlineRounded'
 import { IconButton, Menu, MenuItem } from '@mui/material'
 import React, { useState } from 'react'
 
 interface IAddFuitButtonProps {
-  listFruits: IFruit[]
-  onAddFruit?: (bucketId: string, fruit: IFruit) => void
+  listFruits: IBucketFruitsList[]
+  onRemoveFruit?: (bucketId: string, fruit: IFruit) => void
   bucketId: string
   disabled: boolean
 }
-export const AddFruitButton = ({ listFruits, onAddFruit, bucketId, disabled }: IAddFuitButtonProps) => {
+export const RemoveFruitButton = ({ listFruits, onRemoveFruit, bucketId, disabled }: IAddFuitButtonProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const handleOpenMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -20,9 +21,9 @@ export const AddFruitButton = ({ listFruits, onAddFruit, bucketId, disabled }: I
     setAnchorEl(null)
   }
 
-  const handleClickAdd = (bucketId: string, fruit: IFruit) => {
-    if (typeof onAddFruit !== 'undefined' && typeof onAddFruit === 'function') {
-      onAddFruit(bucketId, fruit)
+  const handleClickRemove = (bucketId: string, fruit: IFruit) => {
+    if (typeof onRemoveFruit !== 'undefined' && typeof onRemoveFruit === 'function') {
+      onRemoveFruit(bucketId, fruit)
     }
     handleCloseMenu()
   }
@@ -38,9 +39,9 @@ export const AddFruitButton = ({ listFruits, onAddFruit, bucketId, disabled }: I
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleOpenMenu}
-        className={cn('text-green-600 disabled:text-opacity-40')}
+        className={cn('text-red-600 disabled:text-opacity-40')}
       >
-        <AddCircleOutlineRoundedIcon fontSize="inherit" />
+        <RemoveCircleOutlineRoundedIcon fontSize="inherit" />
       </IconButton>
       <Menu
         id="basic-menu"
@@ -54,7 +55,8 @@ export const AddFruitButton = ({ listFruits, onAddFruit, bucketId, disabled }: I
         {listFruits &&
           listFruits.length > 0 &&
           listFruits.map((fruit) => (
-            <MenuItem key={fruit.name} onClick={() => handleClickAdd(bucketId, fruit)}>
+            //@ts-ignore
+            <MenuItem key={fruit.name} onClick={() => handleClickRemove(bucketId, fruit)}>
               {fruit.name}
             </MenuItem>
           ))}
