@@ -19,14 +19,13 @@ The challenge is to develop a simple single page application (SPA) for managing 
 - A bucket must be empty before it can be deleted;
 - A fruit does not necessarily need to be in a bucket at the time of its creation, it can be created outside of a bucket and be deposited in a bucket posteriorly
 
-Follow the instructions below to clone the repository, install dependencies, and run locally.
-
 <br  />
 
 > **About the Solution**
 
 This application was built with Next.js, TypeScript, using App Router for client-side/server-side handlering, MUI for components, Tailwind for styling, and Axios for making HTTP requests.
 I also implemented an API with JSON-server and published it on vercel to consume with Axios. The API is working on this link: [https://market-fruit-api.vercel.app/](https://market-fruit-api.vercel.app/)
+Follow the instructions below to clone the repository, install dependencies, and run locally.
 
 <br  />
 
