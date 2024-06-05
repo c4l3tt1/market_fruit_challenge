@@ -54,8 +54,8 @@ export const ListBuckets = async () => {
                 <TableCell>Total Price</TableCell>
                 <TableCell>Ocupation</TableCell>
                 <TableCell>Fruits List</TableCell>
-                <TableCell align="right">Add/Remove Fruits</TableCell>
-                <TableCell align="right">Delete Bucket</TableCell>
+                <TableCell align="center">Add/Remove Fruits</TableCell>
+                <TableCell align="center">Delete Bucket</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -76,7 +76,7 @@ export const ListBuckets = async () => {
                         </React.Fragment>
                       ))}
                     </TableCell>
-                    <TableCell align="right">
+                    <TableCell align="center">
                       {bucket.id && (
                         <>
                           <AddFruitButton listFruits={listFruits} disabled={!canAddFruits} bucketId={bucket?.id} />
@@ -88,7 +88,7 @@ export const ListBuckets = async () => {
                         </>
                       )}
                     </TableCell>
-                    <TableCell align="right">
+                    <TableCell align="center">
                       {bucket.id && (
                         <>
                           <RemoveBucketButton disabled={!canRemoveBucket} bucketId={bucket?.id} />
