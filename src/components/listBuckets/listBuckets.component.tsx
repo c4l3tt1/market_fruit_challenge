@@ -46,7 +46,7 @@ export const ListBuckets = async () => {
     <>
       {listBuckets && listBuckets.length > 0 ? (
         <TableContainer>
-          <Table sx={{ minWidth: 720 }} aria-label="Table fruits" stickyHeader>
+          <Table sx={{ minWidth: 820 }} aria-label="Table fruits" stickyHeader>
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
