@@ -1,19 +1,22 @@
+'use client'
+import { LoadingPage } from '@/components/loadingPage'
 import AppleIcon from '@mui/icons-material/Apple'
 import StorefrontIcon from '@mui/icons-material/Storefront'
 import Link from 'next/link'
-const HomePage = async () => {
-  // const [loading, setLoading] = useState<boolean>(true)
+import { useEffect, useState } from 'react'
+const HomePage = () => {
+  const [loading, setLoading] = useState<boolean>(true)
 
-  // useEffect(() => {
-  //   setTimeout(() => setLoading(false), 1000)
-  // }, [])
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1000)
+  }, [])
 
   const buttonClasses =
     'h-12 w-full whitespace-nowrap max-w-56 text-lg bg-[#1975d2] font-montserrat rounded-md flex justify-center items-center p-4 no-underline text-white font-semibold gap-x-1 transition-all duration-500  hover:bg-blue-500'
 
-  // if (loading) {
-  //   return <LoadingPage />
-  // }
+  if (loading) {
+    return <LoadingPage />
+  }
   return (
     <section className="w-full">
       <div className="container md:px-4">
