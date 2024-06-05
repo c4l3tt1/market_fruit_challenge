@@ -1,7 +1,7 @@
 import AppleIcon from '@mui/icons-material/Apple'
 import StorefrontIcon from '@mui/icons-material/Storefront'
 import Link from 'next/link'
-const HomePage = () => {
+const HomePage = async () => {
   // const [loading, setLoading] = useState<boolean>(true)
 
   // useEffect(() => {
