@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-export const BASE_URL = 'https://market-fruit-api.vercel.app/api'
-//export const BASE_URL = 'http://localhost:3001'
+export const BASE_URL = process.env.NEXT_PUBLIC_API_URL
 
 const apiClient = axios.create({
   baseURL: BASE_URL,
