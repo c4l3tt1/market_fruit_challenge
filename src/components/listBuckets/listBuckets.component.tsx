@@ -1,42 +1,9 @@
-import { getBuckets, updateBucket } from '@/api/services/buckets'
-import { getFruits, updateFruit } from '@/api/services/fruits'
+import { getBuckets } from '@/api/services/buckets'
+import { getFruits } from '@/api/services/fruits'
 import { AddFruitButton, RemoveBucketButton, RemoveFruitButton } from '@/components/listBuckets'
-import { IBucket } from '@/types/buckets'
-import { IFruit } from '@/types/fruits'
 import { cn } from '@/utils/classes'
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import React from 'react'
-
-export const convertMoneyToNumber = (value: string) => {
-  return Number(value.replace(/\./, '').replace(',', '.'))
-}
-
-export const updateBucketOnList = async (bucketId: string, bucketData: IBucket) => {
-  await updateBucket(bucketId, bucketData)
-}
-export const updateFruitOnList = async (fruit: IFruit, isInsideBucket: boolean) => {
-  await updateFruit(fruit.id, {
-    ...fruit,
-    isInsideBucket: isInsideBucket,
-  })
-}
-
-export const getTotalQuantity = (bucket: IBucket): number => {
-  if (!bucket.fruitsList) {
-    return 0
-  }
-  return bucket.fruitsList.reduce((total, fruit) => total + (fruit.quantity ?? 0), 0)
-}
-
-export const getTotalPrice = (bucket: IBucket): number => {
-  if (!bucket.fruitsList) {
-    return 0
-  }
-  return bucket.fruitsList.reduce(
-    (total, fruit) => total + convertMoneyToNumber(fruit?.price ?? '0') * (fruit.quantity ?? 1),
-    0
-  )
-}
 
 export const ListBuckets = async () => {
   const listFruits = await getFruits()

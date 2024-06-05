@@ -1,5 +1,6 @@
 'use client'
 import { getBuckets } from '@/api/services/buckets'
+import { getTotalPrice, getTotalQuantity, updateBucketOnList, updateFruitOnList } from '@/components/listBuckets'
 import { IBucketFruitsList } from '@/types/buckets'
 import { IFruit } from '@/types/fruits'
 import { cn } from '@/utils/classes'
@@ -7,7 +8,6 @@ import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutl
 import { IconButton, Menu, MenuItem } from '@mui/material'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
-import { getTotalPrice, getTotalQuantity, updateBucketOnList, updateFruitOnList } from './listBuckets.component'
 
 interface IAddFuitButtonProps {
   listFruits: IBucketFruitsList[]
