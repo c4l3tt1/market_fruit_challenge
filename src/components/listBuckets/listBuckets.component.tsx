@@ -1,6 +1,6 @@
 import { getBuckets, updateBucket } from '@/api/services/buckets'
 import { getFruits, updateFruit } from '@/api/services/fruits'
-import { AddFruitButton, RemoveFruitButton } from '@/components/listBuckets'
+import { AddFruitButton, RemoveBucketButton, RemoveFruitButton } from '@/components/listBuckets'
 import { IBucket } from '@/types/buckets'
 import { IFruit } from '@/types/fruits'
 import { cn } from '@/utils/classes'
@@ -55,12 +55,14 @@ export const ListBuckets = async () => {
                 <TableCell>Ocupation</TableCell>
                 <TableCell>Fruits List</TableCell>
                 <TableCell align="right">Add/Remove Fruits</TableCell>
+                <TableCell align="right">Delete Bucket</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {listBuckets.map((bucket) => {
                 const canAddFruits = bucket?.ocupation !== 100
                 const canRemoveFruits = bucket?.fruitsList?.length > 0
+                const canRemoveBucket = !bucket?.fruitsList || bucket?.fruitsList?.length === 0
                 return (
                   <TableRow key={bucket?.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                     <TableCell>{bucket?.name}</TableCell>
@@ -83,6 +85,13 @@ export const ListBuckets = async () => {
                             disabled={!canRemoveFruits}
                             bucketId={bucket?.id}
                           />
+                        </>
+                      )}
+                    </TableCell>
+                    <TableCell align="right">
+                      {bucket.id && (
+                        <>
+                          <RemoveBucketButton disabled={!canRemoveBucket} bucketId={bucket?.id} />
                         </>
                       )}
                     </TableCell>

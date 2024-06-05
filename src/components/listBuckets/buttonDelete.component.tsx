@@ -1,18 +1,19 @@
 'use client'
-import { deleteFruit } from '@/api/services/fruits'
+import { deleteBucket } from '@/api/services/buckets'
 import { cn } from '@/utils/classes'
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded'
 import { IconButton } from '@mui/material'
 import { useRouter } from 'next/navigation'
 
-interface IRemoveFuitButtonProps {
-  fruitId: string
+interface IRemoveBucketButtonProps {
+  bucketId: string
   disabled: boolean
 }
-export const DeleteFruitButton = ({ fruitId, disabled }: IRemoveFuitButtonProps) => {
+export const RemoveBucketButton = ({ bucketId, disabled }: IRemoveBucketButtonProps) => {
   const router = useRouter()
-  const handleDeleteFruit = async (fruitId: string) => {
-    await deleteFruit(fruitId)
+
+  const handleDeleteBucket = async (bucketId: string) => {
+    await deleteBucket(bucketId)
     router.refresh()
   }
 
@@ -22,7 +23,7 @@ export const DeleteFruitButton = ({ fruitId, disabled }: IRemoveFuitButtonProps)
         aria-label="Add icon"
         size="large"
         disabled={disabled}
-        onClick={() => handleDeleteFruit(fruitId)}
+        onClick={() => handleDeleteBucket(bucketId)}
         className={cn('text-red-600 disabled:text-opacity-40')}
       >
         <DeleteForeverRoundedIcon fontSize="inherit" />
